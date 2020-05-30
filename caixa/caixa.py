@@ -40,7 +40,8 @@ class Caixa:
 
 x = Caixa('fernando', 1234, 500)
 while True:
-    operacao = str(input('Digite o operação: '))
+    print('>>>SAQUE\n>>>DEPOSITO\n>>>EXTRATO')
+    operacao = str(input('Digite o operação: ')).lower().strip()
     if operacao == 'sair':
         break
     else:
