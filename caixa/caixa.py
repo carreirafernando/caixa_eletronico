@@ -1,6 +1,7 @@
 from datetime import datetime
+import random
 class Caixa:
-    def __init__(self, nome, conta, saldo):
+    def __init__(self, nome, conta, saldo=0):
         self.nome = nome
         self.conta = conta
         self.saldo = saldo
@@ -37,13 +38,30 @@ class Caixa:
         elif acao == 'extrato':
             x.extrato()
 
+    def nucleo(self):
+        while True:
+            print('>>>SAQUE\n>>>DEPOSITO\n>>>EXTRATO')
+            operacao = str(input('Digite o operação: ')).lower().strip()
+            if operacao == 'sair':
+                break
+            else:
+                x.escolha(operacao)
 
-x = Caixa('fernando', 1234, 500)
-while True:
-    print('>>>SAQUE\n>>>DEPOSITO\n>>>EXTRATO')
-    operacao = str(input('Digite o operação: ')).lower().strip()
-    if operacao == 'sair':
-        break
-    else:
-        x.escolha(operacao)
-        
+
+print('>>>ENTRAR\n>>>CRIAR CONTA')
+inicio = str(input('Digite uma opção: '))
+if inicio == 'entrar':
+    conta_numero = int(input('Digite o número da conta: '))
+    nome = str(input('Digite seu nome: '))
+    print(f'Seja bem vindo de volta {nome.title()}!')
+    x = Caixa(nome, conta_numero)
+    x.nucleo()
+else:
+    if inicio == 'criar conta':
+        criar_conta = str(input('Qual o seu nome: '))
+        criar_numero = random.randint(1, 9999)
+        x = Caixa(criar_conta, criar_numero)
+        print(f'CC Criada com sucesso!\n{criar_conta.title()} N° {criar_numero}')
+        x.nucleo()
+
+print('Até a proxima!')
